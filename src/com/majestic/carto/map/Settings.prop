@@ -1,0 +1,17 @@
+# DO NOT MODIFY THESE
+
+chunk_width=16
+chunk_height=128
+chunk_area=2048
+region_size=32
+region_delta=512
+region_regex=^r\\.([-]?\\d*)\\.([-]?\\d*)\\.mcr$
+
+# SAFE TO MODIFY
+
+exposure=10
+emission=0.4
+emitter=10,11,50,51,89
+exclude=0
+sample_radii=1,1,1,1,1,2,4,8,16
+illum_radii=8
