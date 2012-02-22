@@ -2,9 +2,9 @@ Cartocraft by majestic53 (majestic53@gmail.com)
 
 Cartocraft is a top-down, orthogonal Minecraft map renderer with ambient occlusion and lighting. Use Cartocraft to quickly render full color maps of your creations, or use it to create elevation/height maps for use in other applications.
 
-Version 0.1.3:
+Version 0.1.4:
 
-Tested on Minecraft 1.8.
+Tested on Minecraft 1.1
 
 Features:
 
@@ -28,6 +28,10 @@ Known Bugs:
      None at the moment
 
 Changelog:
+
+Version 0.1.4
+
+	Updated block types for version 1.1
 
 Version 0.1.3
 
