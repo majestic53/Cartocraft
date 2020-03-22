@@ -1,8 +1,31 @@
 /**
- * 	Cartocraft -- ChunkInputStream.java
+ * This is free and unencumbered software released into the public domain.
+ *
+ * Anyone is free to copy, modify, publish, use, compile, sell, or
+ * distribute this software, either in source code form or as a compiled
+ * binary, for any purpose, commercial or non-commercial, and by any
+ * means.
+ *
+ * In jurisdictions that recognize copyright laws, the author or authors
+ * of this software dedicate any and all copyright interest in the
+ * software to the public domain. We make this dedication for the benefit
+ * of the public at large and to the detriment of our heirs and
+ * successors. We intend this dedication to be an overt act of
+ * relinquishment in perpetuity of all present and future rights to this
+ * software under copyright law.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+ * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  Cartocraft -- ChunkInputStream.java
  *
  *  Created on: Jul 30, 2011
- *      Author: David Jolly 
+ *      Author: David Jolly
  *      		[jollyd@onid.oregonstate.edu]
  *
  */
@@ -26,14 +49,14 @@ import com.majestic.carto.io.tag.Tag;
 import com.majestic.carto.io.tag.Tag.TagType.Type;
 
 public class ChunkInputStream {
-	
+
 	private DataInputStream is;
 	private Tag root;
-	
+
 	/**
 	 * ChunkInputStream constructor
 	 * @param is DataInputStream
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public ChunkInputStream(DataInputStream is) throws IOException {
 		if(is == null)
@@ -46,7 +69,7 @@ public class ChunkInputStream {
 			root = new EndTag();
 		this.is.close();
 	}
-	
+
 	/**
 	 * Returns a chunks root tag
 	 * @return Tag
@@ -54,7 +77,7 @@ public class ChunkInputStream {
 	public Tag getRootTag() {
 		return root;
 	}
-	
+
 	/**
 	 * Returns a tag by name
 	 * @param name String
@@ -63,7 +86,7 @@ public class ChunkInputStream {
 	public Tag getTag(String name) {
 		return getTagByNameHelper(root, name);
 	}
-	
+
 	/**
 	 * Helper method
 	 * @param tag Tag
@@ -79,7 +102,7 @@ public class ChunkInputStream {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Returns a tag by name within a compound tag
 	 * @param tags Tag[]
@@ -98,13 +121,13 @@ public class ChunkInputStream {
 				return getTagByNameInCompound((Tag[]) tags[i].getValue(), name);
 		return null;
 	}
-	
+
 	/**
 	 * Returns a tag read in from a chunk file
 	 * @param type Type
 	 * @param name String
 	 * @return Tag
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	private Tag readTag(Type type, String name) throws IOException {
 		Tag tag = null;
@@ -135,12 +158,12 @@ public class ChunkInputStream {
 				return tag;
 		}
 	}
-	
+
 	/**
 	 * Returns a value read in from a chunk file
 	 * @param type Type
 	 * @return Object
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	private Object readValue(Type type) throws IOException {
 		switch(type) {

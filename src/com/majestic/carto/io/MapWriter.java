@@ -1,8 +1,31 @@
 /**
- * 	Cartocraft -- MapWriter.java
+ * This is free and unencumbered software released into the public domain.
+ *
+ * Anyone is free to copy, modify, publish, use, compile, sell, or
+ * distribute this software, either in source code form or as a compiled
+ * binary, for any purpose, commercial or non-commercial, and by any
+ * means.
+ *
+ * In jurisdictions that recognize copyright laws, the author or authors
+ * of this software dedicate any and all copyright interest in the
+ * software to the public domain. We make this dedication for the benefit
+ * of the public at large and to the detriment of our heirs and
+ * successors. We intend this dedication to be an overt act of
+ * relinquishment in perpetuity of all present and future rights to this
+ * software under copyright law.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+ * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  Cartocraft -- MapWriter.java
  *
  *  Created on: Jul 30, 2011
- *      Author: David Jolly 
+ *      Author: David Jolly
  *      		[jollyd@onid.oregonstate.edu]
  *
  */
@@ -15,7 +38,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class MapWriter {
-	
+
 	/**
 	 * Returns an image
 	 * @param image char[][][]
@@ -29,13 +52,13 @@ public class MapWriter {
 		for(int x = 0; x < dimX; x++)
 			for(int z = 0; z < dimZ; z++) {
 				color = (image[x][z][0] << 16) | (image[x][z][1] << 8) | image[x][z][2];
-				
+
 				// flip x to correct orientation
 				buffImage.setRGB((dimX - 1) - x, z, color);
 			}
 		return buffImage;
 	}
-	
+
 	/**
 	 * Returns a rainbow scale image
 	 * @param height int[][]
@@ -52,19 +75,19 @@ public class MapWriter {
 			for(int z = 0; z < dimZ; z++) {
 				if(height[x][z] == 0)
 					continue;
-				
+
 				// check for sea-level
 				if(height[x][z] < 64)
 					hue = 240 - 180 * ((float) (height[x][z] - heightMin) / (heightMax - heightMin));
 				else
 					hue = 120 - 120 * ((float) (height[x][z] - heightMin) / (heightMax - heightMin));
-				
+
 				// flip x to correct orientation
 				buffImage.setRGB((dimX - 1) - x, z, hueToRGB(hue));
 			}
 		return buffImage;
 	}
-	
+
 	/**
 	 * Returns a height map
 	 * @param height int[][]
@@ -79,13 +102,13 @@ public class MapWriter {
 		for(int x = 0; x < dimX; x++)
 			for(int z = 0; z < dimZ; z++) {
 				grey = (int) (255 * ((float) height[x][z] / heightMax));
-				
+
 				// flip x to correct orientation
 				buffImage.setRGB((dimX - 1) - x, z, ((grey << 16) | (grey << 8) | grey));
 			}
 		return buffImage;
 	}
-	
+
 	/**
 	 * Hue to RGB conversion
 	 * @param hue float
@@ -122,7 +145,7 @@ public class MapWriter {
 		}
 		return new Integer((red << 16) | (green << 8) | blue);
 	}
-	
+
 	/**
 	 * Writes rendered BufferedImage to file
 	 * @param path File
