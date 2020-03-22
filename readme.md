@@ -23,7 +23,7 @@ Version 0.1.3
 * Initial release
 
 Features
--
+=
 
 * Render color, elevation, and height maps at various heights (0 - Map Height) as png files
 * Rendering process is multi-threaded
@@ -33,23 +33,25 @@ Features
 * Add new block types, and customize colors of blocks
 
 Usage
--
+=
 
 ```
 java -jar Cartocraft.jar [Region File Directory] [Height] [Output]
+```
 
+```
 [Region File Directory]: The directory where a given set of mcr files is location
 [Height]: Render height (0 - Map Height)
 [Output]: The name of the output png file
 ```
 
 Known Bugs
--
+=
 
 None at the moment
 
 License
--
+=
 
 This is free and unencumbered software released into the public domain.
 
